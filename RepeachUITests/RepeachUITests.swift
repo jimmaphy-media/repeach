@@ -1,10 +1,3 @@
-//
-//  RepeachUITests.swift
-//  RepeachUITests
-//
-//  Created by Wesley van Schaijk on 02/10/2026.
-//
-
 import XCTest
 
 final class RepeachUITests: XCTestCase {

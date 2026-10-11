@@ -1,10 +1,3 @@
-//
-//  RepeachTests.swift
-//  RepeachTests
-//
-//  Created by Wesley van Schaijk on 02/10/2026.
-//
-
 import Testing
 @testable import Repeach
 

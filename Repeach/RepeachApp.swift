@@ -1,17 +1,12 @@
-//
-//  RepeachApp.swift
-//  Repeach
-//
-//  Created by Wesley van Schaijk on 02/10/2026.
-//
-
 import SwiftUI
 
 @main
 struct RepeachApp: App {
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        DocumentGroup(newDocument: RepeachFile()) { file in
+            QuestionnaireView(document: file.$document)
         }
+        .defaultSize(width: 1040, height: 680)
+        .windowToolbarStyle(.unified)
     }
 }

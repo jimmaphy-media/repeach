@@ -1,0 +1,45 @@
+{
+  "fill": {
+    "automatic-gradient": "extended-srgb:0.48627,0.74510,0.89804,1.00000"
+  },
+  "groups": [
+    {
+      "layers": [
+        {
+          "image-name": "03-RepeatArrows.svg",
+          "name": "Repeat Arrows"
+        }
+      ]
+    },
+    {
+      "layers": [
+        {
+          "image-name": "02-FrontCard.svg",
+          "name": "Front Card"
+        }
+      ],
+      "translucency": {
+        "enabled": true,
+        "value": 0.12
+      }
+    },
+    {
+      "layers": [
+        {
+          "image-name": "01-RearCard.svg",
+          "name": "Rear Card"
+        }
+      ],
+      "translucency": {
+        "enabled": true,
+        "value": 0.18
+      }
+    }
+  ],
+  "supported-platforms": {
+    "circles": [
+      "watchOS"
+    ],
+    "squares": "shared"
+  }
+}
