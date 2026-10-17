@@ -1,40 +1,43 @@
 import Testing
 @testable import Repeach
 
-@Suite("Questions") struct QuestionTests {
-
-    @Test("Question should be complete") func QuestionIsComplete() async throws {
-        let Question = await Question(prompt: "Is this a question?", answer: "Yes")
-        #expect((await Question.isComplete))
+@Suite("Questions")
+struct QuestionTests {
+    @Test("Question should be complete")
+    func questionIsComplete() throws {
+        let Question = Question(prompt: "Is this a question?", answer: "Yes")
+        #expect(Question.isComplete)
     }
     
-    @Test("Question should be incomplete") func QuestionIsIncomeplete() async throws {
-        let questionEmpty = await Question()
-        let questionEmptyQuestion = await Question(prompt: "")
-        let questionWhiteSpaceQuestion = await Question(prompt: " ")
-        let questionEmptyAnswer = await Question(answer: "")
-        let questionWhiteSpaceAnswer = await Question(answer: " ")
-        let questionWithoutAnswer = await Question(prompt: "Is this a question?", answer: "")
-        let QuestionWithoutQuestion = await Question(prompt: "", answer: "Yes")
+    @Test("Question should be incomplete")
+    func questionIsIncomeplete() throws {
+        let questionEmpty = Question()
+        let questionEmptyQuestion = Question(prompt: "")
+        let questionWhiteSpaceQuestion = Question(prompt: " ", answer: "Yes")
+        let questionEmptyAnswer = Question(answer: "")
+        let questionWhiteSpaceAnswer = Question(prompt: "Is this a question?", answer: " ")
+        let questionWithoutAnswer = Question(prompt: "Is this a question?", answer: "")
+        let QuestionWithoutQuestion = Question(prompt: "", answer: "Yes")
         
-        #expect(!(await questionEmpty.isComplete))
-        #expect(!(await questionEmptyQuestion.isComplete))
-        #expect(!(await questionWhiteSpaceQuestion.isComplete))
-        #expect(!(await questionEmptyAnswer.isComplete))
-        #expect(!(await questionWhiteSpaceAnswer.isComplete))
-        #expect(!(await questionWithoutAnswer.isComplete))
-        #expect(!(await QuestionWithoutQuestion.isComplete))
+        #expect(!questionEmpty.isComplete)
+        #expect(!questionEmptyQuestion.isComplete)
+        #expect(!questionWhiteSpaceQuestion.isComplete)
+        #expect(!questionEmptyAnswer.isComplete)
+        #expect(!questionWhiteSpaceAnswer.isComplete)
+        #expect(!questionWithoutAnswer.isComplete)
+        #expect(!QuestionWithoutQuestion.isComplete)
     }
 
-    @Test("Question should be reversable") func QuestionIsReversable() async throws {
-        let question = await Question(prompt: "Is this a question?", answer: "Yes")
-        let reversedQuestion = await question.reversed()
-        #expect((await reversedQuestion.prompt) == "Yes")
-        #expect((await reversedQuestion.answer) == "Is this a question?")
+    @Test("Question should be reversable")
+    func questionIsReversable() throws {
+        let question = Question(prompt: "Is this a question?", answer: "Yes")
+        let reversedQuestion = question.reversed()
+        #expect(reversedQuestion.prompt == "Yes" && question.prompt == "Is this a question?")
+        #expect(reversedQuestion.answer == "Is this a question?" && question.answer == "Yes")
 
-        let incompleteQuestion = await Question(prompt: "What is the meaning of live?")
-        let reversedIncopleteQuestion = await incompleteQuestion.reversed()
-        #expect((await reversedIncopleteQuestion.prompt) == "")
-        #expect((await reversedIncopleteQuestion.answer) == "What is the meaning of live?")
+        let incompleteQuestion = Question(prompt: "What is the meaning of live?")
+        let reversedIncopleteQuestion = incompleteQuestion.reversed()
+        #expect(reversedIncopleteQuestion.prompt == "" && incompleteQuestion.prompt == "What is the meaning of live?")
+        #expect(reversedIncopleteQuestion.answer == "What is the meaning of live?" && incompleteQuestion.answer == "")
     }
 }
